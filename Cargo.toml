@@ -1,0 +1,9 @@
+[package]
+name = "eecs280-2024-rust"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "p1-stats"
+
+[dependencies]
