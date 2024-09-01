@@ -68,7 +68,7 @@ fn main() -> ExitCode {
     let args: Vec<String> = env::args().skip(1).collect();
     if args.is_empty() {
         // No command-line arguments, use default values for cats.csv sample data
-        two_sample_analysis("cats.csv", "food", 1.0, 2.0, "weight");
+        two_sample_analysis("sample-data/cats.csv", "food", 1.0, 2.0, "weight");
         ExitCode::SUCCESS
     } else if args.len() == 5 {
         // Use custom values from command-line arguments
