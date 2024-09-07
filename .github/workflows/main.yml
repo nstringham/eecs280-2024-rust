@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  - push
+  - workflow_dispatch
+
+env:
+  CARGO_TERM_COLOR: always # Display colors in the terminal
+  RUSTFLAGS: "-Dwarnings" # Make sure CI fails on all warnings, including Clippy lints
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check code for compiler errors
+        run: cargo check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: cargo test
+
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check code format
+        run: cargo fmt --check
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint code
+        run: cargo clippy
