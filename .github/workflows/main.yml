@@ -40,7 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Compile
+        run: cargo build --bin two_sample
       - uses: GuillaumeFalourd/assert-command-line-output@v2.3
         with:
-          command_line: cargo run --bin two_sample
+          command_line: ./target/debug/two_sample
           assert_file_path: sample-files/cats.out.correct
