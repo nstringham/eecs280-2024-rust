@@ -5,8 +5,7 @@ on:
   - workflow_dispatch
 
 env:
-  CARGO_TERM_COLOR: always # Display colors in the terminal
-  RUSTFLAGS: "-Dwarnings" # Make sure CI fails on all warnings, including Clippy lints
+  CARGO_TERM_COLOR: always
 
 jobs:
   check:
@@ -35,4 +34,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Lint code
-        run: cargo clippy
+        run: cargo clippy -- -D warnings
