@@ -7,7 +7,7 @@ use p1_library::*;
 use stats::*;
 
 /// Prints descriptive statistics for the given data
-fn print_descriptive_stats(data: &[f64]) -> () {
+fn print_descriptive_stats(data: &[f64]) {
     todo!()
 }
 
@@ -33,7 +33,7 @@ fn two_sample_analysis(
     filter_val_a: f64,
     filter_val_b: f64,
     data_column_name: &str,
-) -> () {
+) {
     // Extract data from the input file, removing rows with missing data.
     // filter_data and data have type vector<double>
     let (filter_data, data) = extract_columns(file_name, filter_column_name, data_column_name);
