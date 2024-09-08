@@ -19,7 +19,7 @@ pub fn extract_columns(
             .iter()
             .enumerate()
             .find(|(_index, name)| *name == column_name)
-            .expect(&format!("missing column {column_name}"))
+            .unwrap_or_else(|| panic!("missing column {column_name}"))
             .0
     }
 
@@ -58,7 +58,8 @@ pub fn bootstrap_resample(mut data: Vec<f64>, sample_num: usize) -> Vec<f64> {
 
     let mut rng = StdRng::seed_from_u64(seed);
 
-    data.choose_multiple(&mut rng, sample_num)
+    (0..data.len())
+        .map(|_| data.choose(&mut rng).unwrap())
         .cloned()
         .collect()
 }
